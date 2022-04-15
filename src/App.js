@@ -1,4 +1,6 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './Pages/Home/Home';
 import Header from './Pages/SharedComponent/Header';
 
 function App() {
@@ -7,7 +9,11 @@ function App() {
       <header>
         <Header />
       </header>
-      <main></main>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
     </>
   );
 }

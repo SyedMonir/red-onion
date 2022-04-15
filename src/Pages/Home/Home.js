@@ -1,10 +1,14 @@
 import React from 'react';
+import Hero from './Hero/Hero';
+
+import Tabs from './Tabs/Tabs';
 
 const Home = () => {
   return (
-    <div>
-      <h1>HOME</h1>
-    </div>
+    <>
+      <Hero />
+      <Tabs color="pink" />
+    </>
   );
 };
 
