@@ -10,7 +10,16 @@ const Tabs = () => {
       .then((data) => setMeals(data));
   }, []);
   const breakfasts = meals.filter((meal) => meal.strCategory === 'Breakfast');
-  console.log(breakfasts);
+  const lunch = meals.filter((meal) => meal.strCategory === 'Lunch');
+  const dinner = meals.filter((meal) => meal.strCategory === 'Dinner');
+  //   console.log(breakfasts.length, lunch.length, dinner.length);
+
+  if (breakfasts.length && lunch.length && dinner.length) {
+    breakfasts.length = 6;
+    lunch.length = 6;
+    dinner.length = 6;
+  }
+  //   console.log(breakfasts.length, lunch.length, dinner.length);
   return (
     <>
       <section className="flex flex-wrap">
@@ -36,7 +45,7 @@ const Tabs = () => {
                   href="#link1"
                   role="tablist"
                 >
-                  Profile
+                  breakfasts
                 </a>
               </li>
               <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -55,7 +64,7 @@ const Tabs = () => {
                   href="#link2"
                   role="tablist"
                 >
-                  Settings
+                  Lunch
                 </a>
               </li>
               <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -74,7 +83,7 @@ const Tabs = () => {
                   href="#link3"
                   role="tablist"
                 >
-                  Options
+                  dinner
                 </a>
               </li>
             </ul>
@@ -84,32 +93,25 @@ const Tabs = () => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <div className="meals-Container grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-4">
                     {breakfasts.map((breakfast) => (
                       <Meal key={breakfast.idMeal} meal={breakfast}></Meal>
                     ))}
                   </div>
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <p>
-                    Completely synergize resource taxing relationships via
-                    premier niche markets. Professionally cultivate one-to-one
-                    customer service with robust ideas.
-                    <br />
-                    <br />
-                    Dynamically innovate resource-leveling customer service for
-                    state of the art customer service.
-                  </p>
+                  <div className="grid grid-cols-3 gap-4">
+                    {lunch.map((lunch) => (
+                      <Meal key={lunch.idMeal} meal={lunch}></Meal>
+                    ))}
+                  </div>
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
-                  <p>
-                    Efficiently unleash cross-media information without
-                    cross-media value. Quickly maximize timely deliverables for
-                    real-time schemas.
-                    <br />
-                    <br /> Dramatically maintain clicks-and-mortar solutions
-                    without functional solutions.
-                  </p>
+                  <div className="grid grid-cols-3 gap-4">
+                    {dinner.map((dinner) => (
+                      <Meal key={dinner.idMeal} meal={dinner}></Meal>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
