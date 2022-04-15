@@ -18,7 +18,7 @@ const MealDetails = () => {
       });
   }, []);
   const meal = meals.find((meal) => meal.idMeal === params.mealId);
-  console.log(params, meal);
+  // console.log(params, meal);
   return (
     <>
       {spinner ? (
@@ -27,9 +27,11 @@ const MealDetails = () => {
         <div className="card w-11/12 p-8 mx-auto my-12 lg:card-side bg-base-300 shadow-xl">
           <div className="card-body p-0 sm:p-8 sm:w-3/5 w-full">
             <h2 className="card-title text-5xl uppercase">{meal?.strMeal}</h2>
+            <h2 className="card-title text-4xl">{meal?.price}</h2>
             <p className="text-sm text-justify">{meal?.strInstructions}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn btn-primary px-10 ">Add to cart</button>
+              <button className="btn btn-error px-10 ">Order Now</button>
             </div>
           </div>
           <figure className="sm:w-2/5 w-full">

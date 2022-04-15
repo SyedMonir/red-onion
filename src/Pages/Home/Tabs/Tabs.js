@@ -24,7 +24,6 @@ const Tabs = () => {
     lunch.length = 6;
     dinner.length = 6;
   }
-  //   console.log(breakfasts.length, lunch.length, dinner.length);
   return (
     <>
       {spinner ? (
