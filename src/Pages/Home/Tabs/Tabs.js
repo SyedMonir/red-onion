@@ -24,7 +24,7 @@ const Tabs = () => {
     <>
       <section className="flex flex-wrap">
         <div className="w-11/12 mx-auto">
-          <div className="w-2/4 mx-auto my-5">
+          <div className="w-auto sm:w-2/4 mx-auto my-5">
             <ul
               className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
               role="tablist"
@@ -93,21 +93,21 @@ const Tabs = () => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4">
                     {breakfasts.map((breakfast) => (
                       <Meal key={breakfast.idMeal} meal={breakfast}></Meal>
                     ))}
                   </div>
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4">
                     {lunch.map((lunch) => (
                       <Meal key={lunch.idMeal} meal={lunch}></Meal>
                     ))}
                   </div>
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4">
                     {dinner.map((dinner) => (
                       <Meal key={dinner.idMeal} meal={dinner}></Meal>
                     ))}

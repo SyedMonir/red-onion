@@ -8,7 +8,7 @@ import { AiFillYoutube } from 'react-icons/ai';
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="footer p-10 bg-base-200 text-base-content grid grid-cols-2 sm:grid-cols-3 ">
         <div>
           <Link to={'/'} className="btn btn-ghost normal-case text-xl">
             <img src={logo} width={120} alt="" />
@@ -52,14 +52,17 @@ const Footer = () => {
           </Link>
         </div>
       </footer>
-      <footer className="footer items-center px-10 bg-neutral text-neutral-content">
-        <div className="items-center grid-flow-col">
-          <Link to={'/'} className="btn btn-ghost normal-case text-xl">
+      <footer className="footer  items-center py-2 px-10 bg-neutral text-neutral-content">
+        <div className="items-center mx-auto sm:mx-0 grid-flow-row sm:grid-flow-col">
+          <Link
+            to={'/'}
+            className="mx-auto sm:mx-0 btn btn-ghost normal-case text-xl"
+          >
             <h6>Syed Monir</h6>
           </Link>
           <p>Copyright © 2022 - All right reserved</p>
         </div>
-        <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <div className="mx-auto sm:mx-0 grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <Link to="/facebook">
             <AiFillFacebook size={'2rem'} />
           </Link>

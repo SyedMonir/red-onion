@@ -3,7 +3,7 @@ import React from 'react';
 const Meal = ({ meal }) => {
   const { strMealThumb, strMeal, strInstructions } = meal;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-auto  bg-base-100 shadow-xl">
       <figure className="px-5 pt-5">
         <img src={strMealThumb} alt="Shoes" className="rounded-xl" />
       </figure>
