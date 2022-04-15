@@ -6,8 +6,8 @@ import { FiShoppingBag } from 'react-icons/fi';
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <>
-      <nav className="navbar bg-base-300">
+    <header className="sticky top-0 z-10">
+      <nav className="navbar bg-base-300 ">
         <div className="navbar-start">
           <Link to={'/'} className="btn btn-ghost normal-case text-xl">
             <img src={logo} width={120} alt="" />
@@ -35,7 +35,7 @@ const Header = () => {
           </button>
         </div>
       </nav>
-    </>
+    </header>
   );
 };
 

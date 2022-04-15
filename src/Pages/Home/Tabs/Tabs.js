@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Meal from '../../SharedComponent/Meal';
 
 const Tabs = () => {
   const [openTab, setOpenTab] = useState(1);
   const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    fetch('meals.json')
+      .then((res) => res.json())
+      .then((data) => setMeals(data));
+  }, []);
+  const breakfasts = meals.filter((meal) => meal.strCategory === 'Breakfast');
+  console.log(breakfasts);
   return (
     <>
       <section className="flex flex-wrap">
@@ -76,7 +84,11 @@ const Tabs = () => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <div className="meals-Container"></div>
+                  <div className="meals-Container grid grid-cols-3 gap-4">
+                    {breakfasts.map((breakfast) => (
+                      <Meal key={breakfast.idMeal} meal={breakfast}></Meal>
+                    ))}
+                  </div>
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
                   <p>

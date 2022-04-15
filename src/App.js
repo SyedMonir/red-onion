@@ -6,9 +6,7 @@ import Header from './Pages/SharedComponent/Header';
 function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
