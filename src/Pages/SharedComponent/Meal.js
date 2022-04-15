@@ -19,7 +19,7 @@ const Meal = ({ meal }) => {
         <p>{strInstructions.slice(0, 70)}</p>
         <div className="card-actions">
           <button
-            className="btn btn-primary"
+            className="btn btn-error"
             onClick={() => navigate(`/meal-details/${idMeal}`)}
           >
             Order Now
