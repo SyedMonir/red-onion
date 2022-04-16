@@ -1,0 +1,15 @@
+.error {
+    margin-top: 5px;
+    color: red;
+}
+
+.error::before {
+    content: "!  ";
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.5px 4px 0.5px 6px;
+    text-align: center;
+    font-size: 12px;
+    margin-right: 3%;
+}
