@@ -26,7 +26,7 @@ const Signup = () => {
     createUser,
     createUserLoading,
     createUserError,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const handleEmailBlur = (event) => {
     const validTest = /^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/;
@@ -37,19 +37,16 @@ const Signup = () => {
       setError({ ...error, email: '' });
     } else {
       setError({ ...error, email: 'Enter valid email!' });
+      setUserInfo({ ...userInfo, email: '' });
     }
   };
 
   const handlePasswordBlur = (event) => {
-    // (?=.*[a-z])	The string must contain at least 1 lowercase alphabetical character
-    // (?=.*[A-Z])	The string must contain at least 1 uppercase alphabetical character
-    // (?=.*[0-9])	The string must contain at least 1 numeric character
     // (?=.*[!@#$%^&*])	The string must contain at least one special character,
-    // (?=.{8,})	The string must be eight characters or longer
-    // const validTest = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    // const validPassword = validTest.test(event.target.value);
+    const validTest = /(?=.*[!@#$%^&*])/;
+    const validPassword = validTest.test(event.target.value);
 
-    if (true) {
+    if (validPassword) {
       setUserInfo({ ...userInfo, password: event.target.value });
       setError({
         ...error,
@@ -58,23 +55,17 @@ const Signup = () => {
     } else {
       setError({
         ...error,
-        password:
-          'Its must be contains one uppercase, one lowercase, one special character, one number and must be eight character ',
+        password: 'Its must be contains one special character',
       });
+      setUserInfo({ ...userInfo, password: '' });
     }
   };
 
-  // if (createUserLoading) {
-  //   <>
-  //     <span>Loading...</span>
-  //     <Spinner />;
-  //   </>;
-  // }
   if (createUserError) {
     console.log(createUserError);
   }
   if (createUser) {
-    console.log(createUser);
+    console.log(createUser.user);
     // toast('Success!!');
   }
   useEffect(() => {
@@ -97,13 +88,12 @@ const Signup = () => {
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    // const confirmPassword = event.target.confirmPassword.value;
-    createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-    // if (userInfo.password === confirmPassword) {
-    //   createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-    // } else {
-    //   toast.error("Confirm password didn't matched");
-    // }
+    const confirmPassword = event.target.confirmPassword.value;
+    if (userInfo.password === confirmPassword) {
+      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    } else {
+      toast.error("Confirm password didn't matched!");
+    }
   };
   return (
     <>
@@ -181,8 +171,11 @@ const Signup = () => {
                     />
                   </div>
                   <label className="label">
-                    <Link to="/" className="label-text-alt link link-hover">
-                      Forgot password?
+                    <Link
+                      to="/login"
+                      className="label-text-alt link link-hover"
+                    >
+                      Already have account?
                     </Link>
                   </label>
                   <div className="form-control mt-6">
